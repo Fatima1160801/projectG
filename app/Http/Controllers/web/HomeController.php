@@ -15,6 +15,8 @@ class HomeController extends Controller
         $data['trip']=Trip::FindOrFail($id);
         return view('web.home.New-Booking')->with($data);
     }
+        // function request trip cab type van
+
     public function requestTripVan(Request $request){
       $validator= Validator::make($request->all(),[
 
@@ -23,7 +25,7 @@ class HomeController extends Controller
             'Pickup'=>'required',
             'Dropoff'=>'required',
             'numPass'=>'required',
-            'paymentType'=>'required',
+            'PaymentType'=>'required',
             'DriverNote'=>'required',
 
         ]);
@@ -35,12 +37,12 @@ class HomeController extends Controller
 
          $data=Trip::create([
             'van'=>$request->cabType,
-            'date'=>$request->pickupDate,
+            'date'=>date("Y-m-d", strtotime($request->pickupDate)),
             'time'=>$request->pickupTime,
             'Pickup'=>$request->pickup,
             'Dropoff'=>$request->dropoff,
             'numPass'=>$request->passengerCounter,
-            'paymentType'=>$request->PaymentType,
+            'PaymentType'=>$request->PaymentType,
 
 
         ]);
@@ -50,10 +52,10 @@ class HomeController extends Controller
        return redirect(url('/passenger/Newbooking-confirm/2'));
 
     }
-    public function rquestShow(){
+   /*  public function rquestShow(){
         return view('web.home.test');
-    }
-
+    } */
+    // function request trip cab type Taxi
     public function requestTripTaxi(Request $request , $id){
         $validator=Validator::make($request->all(),[
             'date'=>'required',
@@ -69,17 +71,25 @@ class HomeController extends Controller
             return redirect(url('/1'))->withErrors($error);
         }
 
-        Trip::create([
+        $data=Trip::create([
             'taxi'=>$request->cabType,
-            'date'=>date("d-m-Y", strtotime($request->pickupDate)),
+            'date'=>date("Y-m-d", strtotime($request->pickupDate)),
             'time'=>$request->pickupTime,
             'Pickup'=>$request->pickup,
-            'Dropofff'=>$request->dropoff,
+            'Dropoff'=>$request->dropoff,
             'PaymentType'=>$request->PaymentType,
             'DriverNote'=>$request->DriverNote,
 
         ]);
+        dd($data);
         $request->session()->flash('success','your request sent successflly');
         return redirect(url('/passenger/Newbooking-confirm/2'));
+    }
+    //function for bus request tirp
+    public function requestBusTrip(Request $request){
+        $validator=Validator::make($request->all(),[
+
+
+        ]);
     }
 }

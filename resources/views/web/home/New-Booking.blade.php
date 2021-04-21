@@ -65,9 +65,9 @@
                                 <div class="default-tab">
                                     <nav>
                                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-Bus" role="tab" aria-controls="nav-home" aria-selected="false"><i class="fa fas fa-bus">{{__('web.Bus')}}</i></a>
-                                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-ford" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa fas fa-truck">{{__('web.Van')}} </i></a>
-                                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-taxi" role="tab" aria-controls="nav-contact" aria-selected="true"><i class="fa fas fa-taxi">{{__('web.Taxi')}}</i></a>
+                                            <a class="nav-item nav-link active" id="nav-bus-tab" data-toggle="tab" href="#nav-Bus" role="tab" aria-controls="nav-bus" aria-selected="false"><i class="fa fas fa-bus">{{__('web.Bus')}}</i></a>
+                                            <a class="nav-item nav-link" id="nav-van-tab" data-toggle="tab" href="#nav-ford" role="tab" aria-controls="nav-van" aria-selected="false"><i class="fa fas fa-truck">{{__('web.Van')}} </i></a>
+                                            <a class="nav-item nav-link" id="nav-taxi-tab" data-toggle="tab" href="#nav-taxi" role="tab" aria-controls="nav-taxi" aria-selected="true"><i class="fa fas fa-taxi">{{__('web.Taxi')}}</i></a>
 
 
 
@@ -89,16 +89,18 @@
                                                                     <div class="col col-md-6">
 
                                                                         <label for=""> <i class="fa fa-calendar"></i>{{__('web.Pickup date')}}</label>
-                                                                        <input type="date" name="date" placeholder="Add the date, please"  value="" >
+                                                                        <input  class="form-control" type="date" name="date" placeholder="Add the date, please"  value="" >
                                                                     </div>
 
 
 
 
                                                                     <div class="col col-md-6">
+                                                                        <label for=""> <i class="fa fa fa-clock-o "></i> {{__('web.Pickup time')}}</label>
+                                                                       <input   class="form-control" type="time" name="time"  value="">
 
-                                                                        <label for=""> <i class="fa fa fa-clock-o "></i> {{__('web.Pickup time')}}</label><br>
-                                                                        <input type="time" name="time"  value="">
+
+
                                                                     </div>
 
 
@@ -121,7 +123,10 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <input type="text" id="Pickup" name="Pickup" placeholder="Address" class="form-control"  value="">
+
+                                                                            <input class="form-control" id="Pickup" name="Pickup" placeholder="Address" type="text" value="">
+
+
                                                                         </div>
 
                                                                     </div>
@@ -136,13 +141,15 @@
                                                                                 <div class="btn-group">
                                                                                     <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle btn btn-light"><i class="ti-star"></i></button>
                                                                                     <div tabindex="-1" aria-hidden="true" role="menu" class="dropdown-menu">
-                                                                                        <div class="ml-3 "> {{__('web.Favourites')}}</div>
+                                                                                        <div class="ml-3"> {{__('web.Favourites')}}</div>
                                                                                         <button type="button" tabindex="0" class="dropdown-item">{{__('web.No favourite addresses have been saved')}}</button>
                                                                                         <div tabindex="-1" class="dropdown-divider"></div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <input type="text" id="Dropoff" name="Dropofff" placeholder="Address" class="form-control" value="">
+
+                                                                            <input class="form-control" id="Dropoff" name="Dropoff" placeholder="Address" type="text" value="">
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -203,7 +210,7 @@
                                             </form>
                                         </div>
 
-                                        <!--navbar tage for ford--->
+                                        <!--navbar tage for van--->
 
                                         <div class="tab-pane fade" id="nav-ford" role="tabpanel" name="van" aria-labelledby="nav-profile-tab">
                                             @include('web.inc.requestTrip')
@@ -217,20 +224,24 @@
                                                         <div class="card-body card-block">
 
 
-                                                                <div class="row ">
-                                                                    <div class="col col-md-6">
-                                                                        <label for=""> <i class="fa fa-calendar"></i> {{__('web.Pickup date')}}</label>
-                                                                        <input type="date" name="date"  value="">
-                                                                    </div>
+                                                            <div class="row ">
+                                                                <div class="col col-md-6">
 
-                                                                    <div class="col col-md-6">
+                                                                    <label for=""> <i class="fa fa-calendar"></i>{{__('web.Pickup date')}}</label>
+                                                                    <input  class="form-control" type="date" name="date" placeholder="Add the date, please"  value="" >
+                                                                </div>
 
-                                                                        <label for=""> <i class="fa fa fa-clock-o "></i> {{__('web.Pickup time')}}</label><br>
-                                                                        <input type="time" name="time"  value="">
-                                                                    </div>
 
+
+
+                                                                <div class="col col-md-6">
+                                                                    <label for=""> <i class="fa fa fa-clock-o "></i> {{__('web.Pickup time')}}</label>
+                                                                   <input   class="form-control" type="time" name="time"  value="">
 
                                                                 </div>
+
+
+                                                            </div>
 
                                                                 <br>
 
@@ -269,7 +280,9 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <input type="text" id="Dropoff" name="Dropoff" placeholder="Address" class="form-control" value="">
+
+                                                                            <input class="form-control" id="Dropoff" name="Dropoff" placeholder="Address" type="text" value="" >
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -293,38 +306,40 @@
                                                                         <div class="num">
                                                                             <label class="numofpass"> <i class="fa  fa-users"></i> {{__('web.Number of passengers')}}</label>
                                                                             <select class="form-control" name="numPass">
-                                                                            <option value="0">0</option>
-                                                                            <option value="1">1</option>
-                                                                            <option value="2">2</option>
-                                                                            <option value="3">3</option>
-                                                                            <option value="4">4</option>
-                                                                            <option value="5">5</option>
-                                                                            <option value="6">6</option>
-                                                                            <option value="7">7</option>
+                                                                            <option  value="0">0</option>
+                                                                            <option  value="1">1</option>
+                                                                            <option  value="2">2</option>
+                                                                            <option  value="3">3</option>
+                                                                            <option  value="4">4</option>
+                                                                            <option  value="5">5</option>
+                                                                            <option  value="6">6</option>
+                                                                            <option  value="7">7</option>
                                                                             </select>
                                                                         </div>
                                                                         <br>
 
                                                                         <div class="row form-group Payment">
-                                                                            <div class="col col-md-9"><label class=" form-control-label"><i class=" fa  fa-money mr-1"></i>{{__('web.Payment type')}} </label></div>
+                                                                            <div class="col col-md-9"><label class=" form-control-label"><i class=" fa  fa-money mr-1"></i>{{__('web.Payment type')}}</label></div>
                                                                             <div class="col col-md-9">
                                                                                 <div class="form-check-inline form-check">
                                                                                     <label for="inline-radio1" class="form-check-label  mr-4">
-                                                                                        <input type="radio" id="inline-radio1" name="paymentType" value="cash" class="form-check-input ">{{__('web.Cash')}}
+                                                                                        <input type="radio" id="inline-radio1" name="PaymentType" value="cash" class="form-check-input ">{{__('web.Cash')}}
                                                                                     </label>
                                                                                     <label for="inline-radio2" class="form-check-label mr-4 ">
-                                                                                        <input type="radio" id="inline-radio2" name="paymentType" value="BZUid" class="form-check-input ">{{__('web.BZU card')}}
+                                                                                        <input type="radio" id="inline-radio2" name="PaymentType" value="BZUid" class="form-check-input ">{{__('web.BZU card')}}
                                                                                     </label>
 
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+
                                                                         <br>
 
                                                                         <div>
                                                                             <label><i class="fas fa  fa-comment mr-1"></i>{{__('web.Driver note (optional)')}}</label>
                                                                             <input class="form-control" id="DriverNote" name="DriverNote" placeholder="Blank" type="text" value="">
                                                                         </div>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
