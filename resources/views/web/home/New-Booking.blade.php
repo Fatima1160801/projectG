@@ -124,8 +124,7 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <input class="form-control" id="Pickup" name="Pickup" placeholder="Address" type="text" value="">
-
+                                                                            <input type="text" value="" name="Pickup" id="Pickup">
 
                                                                         </div>
 
@@ -339,7 +338,7 @@
                                                                             <label><i class="fas fa  fa-comment mr-1"></i>{{__('web.Driver note (optional)')}}</label>
                                                                             <input class="form-control" id="DriverNote" name="DriverNote" placeholder="Blank" type="text" value="">
                                                                         </div>
-                                                                        
+
                                                                     </div>
                                                                 </div>
                                                             </div>

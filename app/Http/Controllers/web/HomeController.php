@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\web;
 
-use App\Http\Controllers\Controller;
 use App\Models\Trip;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -58,12 +59,12 @@ class HomeController extends Controller
     // function request trip cab type Taxi
     public function requestTripTaxi(Request $request , $id){
         $validator=Validator::make($request->all(),[
-            'date'=>'required',
-            'time'=>'required',
-            'Pickup'=>'required',
-            'Dropoff'=>'required',
-            'PaymentType'=>'required',
-            'DriverNote'=>'required',
+           // 'date'=>'required',
+            //'time'=>'required',
+          //  'Pickup'=>'required',
+           // 'Dropoff'=>'required',
+            //'PaymentType'=>'required',
+            //'DriverNote'=>'required',
 
         ]);
         if($validator->fails()){
@@ -71,17 +72,21 @@ class HomeController extends Controller
             return redirect(url('/1'))->withErrors($error);
         }
 
-        $data=Trip::create([
-            'taxi'=>$request->cabType,
-            'date'=>date("Y-m-d", strtotime($request->pickupDate)),
-            'time'=>$request->pickupTime,
+        /* Trip::create([
+            //'taxi'=>$request->cabType,
+            //'date'=>date("Y-m-d", strtotime($request->pickupDate)),
+            //'time'=>$request->pickupTime,
             'Pickup'=>$request->pickup,
-            'Dropoff'=>$request->dropoff,
-            'PaymentType'=>$request->PaymentType,
-            'DriverNote'=>$request->DriverNote,
+            // 'Dropoff'=>$request->dropoff,
+           // 'PaymentType'=>$request->PaymentType,
+           // 'DriverNote'=>$request->DriverNote,
 
-        ]);
-        dd($data);
+        ]); */
+       // $data['trips']=Trip::select('pickup')->get();
+       //$data = DB::table('trips')->insert(['pickup' => 'Abu Qush']);//inserting data
+       
+
+        //dd($data);
         $request->session()->flash('success','your request sent successflly');
         return redirect(url('/passenger/Newbooking-confirm/2'));
     }
