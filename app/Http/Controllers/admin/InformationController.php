@@ -14,6 +14,9 @@ class InformationController extends Controller
     //
     public function showDriver(){
         $data['drivers']=Driver::select('name','ssn','salray','phone','banknumber','license','available','busy','created_at')->get();
+        $data['cab']=Cab::select('cabType','cabNumber','seatNum','license','insurance','driver_id','machineNumber')->get();
+
+    );
         return view('admin.information.Driverinformation')->with($data);
 
     }
@@ -24,6 +27,9 @@ class InformationController extends Controller
 
 
          }
+
+
+
    public function showPassenger(){
         $data['pasengers']=Passenger::select('name','BZUID','email','phone','canbook','balance','created_at')->get();
         return view('admin.information.Passengerinformation')->with($data);

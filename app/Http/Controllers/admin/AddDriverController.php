@@ -25,6 +25,12 @@ class AddDriverController extends Controller
         'password'=>'required|string|max:255',
         'banknumber'=>'required',
 
+        'cabType'=>'required',
+        'cabNumber' => 'required',
+        'seatNum'=>'required',
+        'license'=>'required',
+        'insurance'=>'required',
+        'machineNumber'=>'required'
 
         ]);
 
@@ -33,7 +39,7 @@ class AddDriverController extends Controller
             return redirect(url('/admin/AddDriver/1'))->withErrors($error);
 
         }
-        Driver::create([
+       $driver=Driver::create([
         'name'=>$request->name,
         'phone'=>$request->phone,
         'ssn'=>$request->ssn,
@@ -42,8 +48,26 @@ class AddDriverController extends Controller
         'banknumber'=>$request->banknumber,
 
         ]);
+
+        
+     $driverid=$driver->id;
+
+     $data=Cab::create([
+         'cabType'=>$request->cabType,
+        'cabNumber'=>$request->cabNumber,
+        'seatNum'=>$request->seatNum,
+        'license'=>$request->license,
+        'insurance'=>$request->insurance,
+        'machineNumber'=>$request->machineNumber,
+        'driver_id'=>$driverid,
+
+         ]);
+
+
     $request->session()->flash('success','A new driver with his cab add successfully');
      return redirect(url('/admin/informationDriver/1'));
+
+
 
 
        }

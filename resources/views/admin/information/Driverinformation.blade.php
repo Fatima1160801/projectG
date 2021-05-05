@@ -53,6 +53,7 @@
                         <th>{{__('web.Phone')}} </th>
                         <th>{{__('web.License')}} </th>
                         <th>{{__('web.created_at')}} </th>
+                        <th>{{__('web.Cab Details')}} </th>
                         <th></th>
                     </tr>
                 </thead>
@@ -72,6 +73,8 @@
                         <td>{{$driver->phone}}</td>
                         <td>{{$driver->license}}</td>
                         <td>{{$driver->created_at}}</td>
+                        <td>  <a href="#deleteEmployeeModal" class="btn" data-toggle="modal"> <i class="fa ti-car" aria-hidden="true"></i></a></td>
+
                         <td>
                             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
@@ -134,27 +137,54 @@
             </div>
         </div>
     </div>
-    <!-- Delete Modal HTML -->
+    <!-- cab Modal HTML -->
     <div id="deleteEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
-                        <h4 class="modal-title">{{__('web.Delete Employee')}} </h4>
+                        <h4 class="modal-title">{{__('web.Cab Details')}} </h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <p>{{__('web.Are you sure you want to delete these Records?')}} </p>
-                        <p class="text-warning"><small>{{__('web.This action cannot be undone.')}} </small></p>
+                        <div class="form-group">
+                            <label>{{__('web.Cab Type')}} </label>
+                            <select name="cabType" aria-controls="bootstrap-data-table-export" class="custom-select custom-select-sm form-control form-control-sm">
+                                <option value="Taxi">Taxi</option>
+                                <option value="Van">Van</option>
+                                <option value="Bus">Bus</option>
+
+                             </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>{{__('web.Cab Number')}} </label>
+                            <input type="text" class="form-control" placeholder="123-45-678" required>
+                        </div>
+                        <div class="form-group">
+                            <label>{{__('web.Seat Number')}} </label>
+                            <input type="Number" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>{{__('web.license')}} </label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>{{__('web.Machine Number')}} </label>
+                            <input type="text" class="form-control" required>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
+                        <input type="submit" class="btn btn-info" value="Edit">
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+
 
 </div>
 

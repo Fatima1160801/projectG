@@ -89,7 +89,7 @@
 
                     <div class="form-group">
                         <div class="dataTables_length" id="bootstrap-data-table-export_length">
-                            <label class="d-flex justify-content-start " id="type">cab Type <select name="bootstrap-data-table-export_length" aria-controls="bootstrap-data-table-export" class="custom-select custom-select-sm form-control form-control-sm">
+                            <label class="d-flex justify-content-start " id="type">cab Type <select name="cabType" aria-controls="bootstrap-data-table-export" class="custom-select custom-select-sm form-control form-control-sm">
                                 <option value="Taxi">Taxi</option>
                                 <option value="Van">Van</option>
                                 <option value="Bus">Bus</option>
@@ -101,13 +101,13 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-car" aria-hidden="true"></i></div>
-                                <input type="text" id="cabnumber" name="cabnumber" placeholder=" cab number" class="form-control">
+                                <input type="text" id="cabNumber" name="cabNumber" placeholder=" cab number" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-car" aria-hidden="true"></i></div>
-                                <input type="number"  class="form-control" name="seatnumber"  placeholder="Seat number " id="seatnumber">
+                                <input type="number"  class="form-control" name="seatNum"  placeholder="Seat number " id="seatNum">
                             </div>
                         </div>
                         <div class="form-group">
