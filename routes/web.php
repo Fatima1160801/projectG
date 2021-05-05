@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\AddAdmin;
+use App\Http\Controllers\admin\AddAdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\RegisterController;
@@ -47,37 +49,39 @@ use App\Http\Controllers\driver\DriverProfileController;
 
     Route::middleware('lang')->group(function () {
 //register and login
-Route::get('/register/{id}',[RegisterController::class,'show']);
-Route::get('/login/{id}',[loginController::class,'show']);
-Route::get('/login-forgetPass/{id}',[loginController::class,'forgetPassShow']);
-
+//Route::get('/login/{id}',[loginController::class,'show']);
+//Route::get('/login-forgetPass/{id}',[loginController::class,'forgetPassShow']);
 
 
 //Passsenger
-Route::get('/{id}',[HomeController::class,'show']);
-Route::get('/passenger/My-Profile/{id}',[ProfileController::class,'show']);
-Route::get('/passenger/My-Rate/{id}',[RateController::class,'show']);
-Route::get('/passenger/Newbooking-booked/{id}',[BookedController::class,'show']);
-Route::get('/passenger/Newbooking-confirm/{id}',[ConfirmController::class,'show']);
-Route::get('/passenger/My-Trips/{id}',[MyTripsController::class,'show']);
-Route::get('/passenger/Rewards/{id}',[RewardsController::class,'show']);
+Route::get('/{id}',[HomeController::class,'show'])->middleware(['auth','verified','passenger']);
+Route::get('/passenger/My-Profile/{id}',[ProfileController::class,'show'])->middleware(['auth','verified','passenger']);
+Route::get('/passenger/My-Rate/{id}',[RateController::class,'show'])->middleware(['auth','verified','passenger']);
+Route::get('/passenger/Newbooking-booked/{id}',[BookedController::class,'show'])->middleware(['auth','verified','passenger']);
+Route::get('/passenger/Newbooking-confirm/{id}',[ConfirmController::class,'show'])->middleware(['auth','verified','passenger']);
+Route::get('/passenger/My-Trips/{id}',[MyTripsController::class,'show'])->middleware(['auth','verified','passenger']);
+Route::get('/passenger/Rewards/{id}',[RewardsController::class,'show'])->middleware(['auth','verified','passenger']);
+
 //insert data to database Passenger (Post)
-//Route::get('/requestVanTrip/ssss/',[HomeController::class,'rquestShow']);
 Route::post('/requestVanTrip/{id}',[HomeController::class,'requestTripVan']);
 Route::post('/requestTaxiTrip/{id}',[HomeController::class,'requestTripTaxi']);
+Route::post('/requestBusTrip/{id}',[HomeController::class,'requestBusTrip']);
 
-
+Route::post('/insertadmin',[AddAdminController::class,'insertadmin']);
+Route::post('/insertdriver',[AddDriverController::class,'insertdriver']);
+Route::post('/insertcab',[AddDriverController::class,'insertcab']);
 
 //Admin
 Route::get('/admin/{id}',[AdminHomeController::class,'show']);
 Route::get('/admin/Admin-Profile/{id}',[AdminProfileController::class,'show']);
-Route::get('/admin/AddDriver/{id}',[AddDriverController::class,'show']);
-Route::get('/admin/AddAdmin/{id}',[AddDriverController::class,'show']);
+Route::get('/admin/AddDriver/{id}',[AddDriverController::class,'AddDriver']);
+Route::get('/admin/AddAdmin/{id}',[AddAdminController::class,'AddAdmin']);
+
 Route::get('/admin/informationDriver/{id}',[InformationController::class,'showDriver']);
 Route::get('/admin/informationAdmin/{id}',[InformationController::class,'showAdmin']);
 Route::get('/admin/informationPassenger/{id}',[InformationController::class,'showPassenger']);
-
-
+Route::get('/subadmin/profile/{id}',[InformationController::class,'subadminprofile']);
+Route::get('/subadmin/payment/{id}',[InformationController::class,'showpayment']);
 Route::get('/admin/Extra/{id}',[ExtraController::class,'show']);
 Route::get('/admin/ManageRewards/{id}',[ManageRewardsController::class,'show']);
 Route::get('/admin/ManualBookings/{id}',[ManualBookingsController::class,'show']);
@@ -86,9 +90,19 @@ Route::get('/admin/Notifications/{id}',[NotificationsController::class,'show']);
 Route::get('/admin/RushHours/{id}',[RushHoursController::class,'show']);
 Route::get('/admin/TrackDrivers/{id}',[TrackDriversController::class,'show']);
 Route::get('/admin/TrackEarnings/{id}',[TrackEarningsController::class,'show']);
+
+//-----------trips---------------------------------------------------------------------------------------
+//-----------trips/bus------------------------------------------------------------------------------------
 Route::get('/admin/Buses/{id}',[BusesController::class,'show']);
+Route::get('/admin/insertBusesTrip',[BusesController::class,'insertBus']);
+Route::get('/admin/AddNewBusesTrip',[BusesController::class,'addBus']);
+
+//-------------------------------------------------------------------------------------------------------
 Route::get('/admin/Taxis/{id}',[TaxisController::class,'show']);
 Route::get('/admin/Vans/{id}',[VansController::class,'show']);
+
+//Post Method for Admin
+Route::post('/addDriver/{id}',[InformationController::class,'addDriver']);
 
 
 

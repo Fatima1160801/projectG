@@ -10,4 +10,22 @@ class BusesController extends Controller
     public function show($id){
         return view('admin.buses.buses');
     }
+
+
+
+
+    public function insertBus(){
+
+
+    }
+
+
+
+    public function addBus(){
+
+        
+    }
+
+
+
 }

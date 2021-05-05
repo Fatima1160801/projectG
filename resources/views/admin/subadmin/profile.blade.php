@@ -1,6 +1,8 @@
-@extends('admin.layout')
-@section('title') profile @endsection
+
+@extends('admin.subadmin.sublayout')
 @section('main')
+
+
 
 
 <div class="breadcrumbs">
@@ -15,8 +17,8 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">My Profile</li>
+
+                    <li class="active">{{__('web.My profile')}}</li>
                 </ol>
             </div>
         </div>
@@ -39,8 +41,8 @@
                         <div class="default-tab">
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Driver Profile</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Credit Cards</a>
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">ِ{{__('web.Admin Profile')}}</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">{{__('web.Credit Cards')}} </a>
                                 </div>
                             </nav>
                             <div class="tab-content pl-3 pt-2" id="nav-tabContent">
@@ -49,7 +51,7 @@
             <div class="col-lg-6">
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h4>Change Admin Detalies</h4>
+                        <h4>{{__('web.Change Admin Detalies')}}</h4>
                     </div>
                     <div class="card-body">
                         <div class="card-body card-block">
@@ -57,23 +59,23 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                        <input type="text" id="username" name="username" placeholder="Username" class="form-control">
+                                        <input type="text" id="username" name="username" placeholder="{{__('web.Username')}}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                        <input type="email" id="email" name="email" placeholder="Email" class="form-control">
+                                        <input type="email" id="email" name="email" placeholder="{{__('web.Email')}}" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                                        <input type="text" id="Phone" name="Phone" placeholder="Phone" class="form-control" >
+                                        <input type="text" id="Phone" name="Phone" placeholder="{{__('web.phone')}}" class="form-control" >
                                     </div>
                                 </div>
-                                <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Change Detalies</button></div>
+                                <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">{{__('web.change Detalies')}}</button></div>
                             </form>
                         </div>
 
@@ -86,24 +88,24 @@
             <div class="col-lg-6">
                 <div class="card mt-4">
                     <div class="card-header ">
-                        <h4>Change Password</h4>
+                        <h4>{{__('web.change Password')}}</h4>
                     </div>
                     <div class="card-body">
                         <div class="card-body card-block">
                             <form action="" method="post" class="">
                                 <div class="row form-group">
-                                    <div class="col col-md-3"><label for="hf-password" class=" form-control-label">Current password</label></div>
+                                    <div class="col col-md-3"><label for="hf-password" class=" form-control-label">{{__('web.Current password')}}</label></div>
                                     <div class="col-12 col-md-9"><input type="password" id="Current password" name="Current password"  class="form-control"></div>
                                 </div>
                                 <div class="row form-group">
-                                    <div class="col col-md-3"><label for="hf-password" class=" form-control-label">New password</label></div>
+                                    <div class="col col-md-3"><label for="hf-password" class=" form-control-label">{{__('web.New password')}}</label></div>
                                     <div class="col-12 col-md-9"><input type="password" id="New password" name="New password"  class="form-control"></div>
                                 </div>
                                 <div class="row form-group">
-                                    <div class="col col-md-3"><label for="hf-password" class=" form-control-label">Confirm new password</label></div>
+                                    <div class="col col-md-3"><label for="hf-password" class=" form-control-label">{{__('web.Confirm new password')}}</label></div>
                                     <div class="col-12 col-md-9"><input type="password" id="Confirm new password" name="Confirm new password"  class="form-control"></div>
                                 </div>
-                                <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm  ">Change Password</button></div>
+                                <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm  ">{{__('web.change Password')}}</button></div>
 
                             </form>
                         </div>
@@ -120,14 +122,14 @@
                                     <div class="col-lg-6">
                                         <div class="card mt-3 ">
                                             <div class="card-header">
-                                                <strong class="card-title">Credit Card</strong>
+                                                <strong class="card-title">{{__('web.Credit Cards')}}</strong>
                                             </div>
                                             <div class="card-body">
                                                 <!-- Credit Card -->
                                                 <div id="pay-invoice">
                                                     <div class="card-body">
                                                         <div class="card-title">
-                                                            <h3 class="text-center">Pay Invoice</h3>
+                                                            <h3 class="text-center">{{__('web.Pay Invoice')}}</h3>
                                                         </div>
                                                         <hr>
                                                         <form action="" method="post" novalidate="novalidate">
@@ -140,29 +142,29 @@
                                                                 </ul>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="cc-payment" class="control-label mb-1">Payment amount</label>
+                                                                <label for="cc-payment" class="control-label mb-1">{{__('web.Payment amount')}}</label>
                                                                 <input id="cc-pament" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
                                                             </div>
                                                                 <div class="form-group has-success">
-                                                                    <label for="cc-name" class="control-label mb-1">Name on card</label>
+                                                                    <label for="cc-name" class="control-label mb-1">{{__('web.Name on card')}}</label>
                                                                     <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
                                                                     <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="cc-number" class="control-label mb-1">Card number</label>
+                                                                    <label for="cc-number" class="control-label mb-1">{{__('web.Card number')}}</label>
                                                                     <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true" data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number" autocomplete="cc-number">
                                                                     <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-6">
                                                                         <div class="form-group">
-                                                                            <label for="cc-exp" class="control-label mb-1">Expiration</label>
+                                                                            <label for="cc-exp" class="control-label mb-1">{{__('web.Expiration')}}</label>
                                                                             <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="MM / YY" autocomplete="cc-exp">
                                                                             <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-6">
-                                                                        <label for="x_card_code" class="control-label mb-1">Security code</label>
+                                                                        <label for="x_card_code" class="control-label mb-1">{{__('web.Security code')}}</label>
                                                                         <div class="input-group">
                                                                             <input id="x_card_code" name="x_card_code" type="tel" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" autocomplete="off">
                                                                             <div class="input-group-addon">
@@ -175,7 +177,7 @@
                                                                     <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                                                                         <i class="fa fa-lock fa-lg"></i>&nbsp;
                                                                         <span id="payment-button-amount">Pay $100.00</span>
-                                                                        <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                                                        <span id="payment-button-sending" style="display:none;">{{__('web.Sending…')}}</span>
                                                                     </button>
                                                                 </div>
                                                         </form>
@@ -200,30 +202,7 @@
 
         </div> <!-- .row -->
     </div><!-- .animated -->
-    <!-- start footer -->
-    <div class="card-footer">
-        <div class="panel-footer">
-            <div class="col-sm-3 mt-3">
-                <div class="foo mt-2"><p>© 2020 BZU TRANSPORTATION</p></div>
-            </div>
-            <div class="col-sm-5 "></div>
-            <div class="col-sm-4 mt-3  d-flex justify-content-around ">
-
-                    <div class="form-group d-flex  ">
-                        <select class="form-control " id="PickUp_SelectedCity" name="PickUp.SelectedCity">
-                        <option selected="selected" value="53.479874/-2.239151">english </option>
-                        <option value="51.507033/-0.116043">arabic</option>
-                        </select>
-                </div>
-
-                <a class="nav-link mr-1" href="#"><i class="fa fa-question-circle"></i> HELP</a>
-                <a class="nav-link mr-1" href="#"><i class="fa fa-phone-square"></i> SOS</a>
 
 
-            </div>
-        </div>
-    </div>
-    <!-- end footer -->
-<!-- .content -->
 
 @endsection

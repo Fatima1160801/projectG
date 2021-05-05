@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('auth.layout')
 @section('title') Register @endsection
 @section('main')
 
@@ -14,9 +14,13 @@
         <div>
             <div class="float-right d-flex">
 
-                    <a class="nav-link " href="{{url("register/id")}}"><i class="fas fa-address-book"></i>{{__('web.Register')}}</a>
-                    <a class="nav-link  " href="{{url("login/id")}}"> <i class="fas fa-sign-in-alt"></i>{{__('web.login')}}</a>
 
+                    <a class="nav-link  " href="{{url("login/id")}}"> <i class="fa fa-sign-in"></i> {{__('web.login')}}</a>
+                    @if(App::getLocale()=="ar")
+                    <a class="nav-link mr-1" href="{{url('lang/set/en')}}"><i class="fa fa-question-circle"></i> english</a>
+                    @else
+                    <a class="nav-link mr-1" href="{{url('lang/set/ar')}}"><i class="fa fa-question-circle"></i> arabic</a>
+                    @endif
             </div>
         </div>
     </div>
@@ -31,38 +35,45 @@
         <div class="login-logo">
 
         </div>
+
         <div class="login-form">
-            <form>
+            @include('web.inc.requestTrip')
+            <form method="POST" action="{{url('/register')}}">
+                @csrf
                 <div class="form-group">
                     <label>{{__('web.User Name')}}</label>
-                    <input type="email" class="form-control" placeholder="{{__('web.User Name')}}">
+                    <input type="text" name="name" class="form-control" placeholder="">
                 </div>
                     <div class="form-group">
                         <label>{{__('web.Email address')}}</label>
-                        <input type="email" class="form-control" placeholder="{{__('web.Email address')}}">
+                        <input type="email" name="email" class="form-control" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>{{__('web.User phone')}}</label>
-                    <input type="text" class="form-control" placeholder="{{__('web.User phone')}}">
+                    <input type="text" name="phone" class="form-control" placeholder="">
             </div>
             <div class="form-group">
                 <label>{{__('web.User University ID')}}</label>
-                <input type="number" class="form-control" placeholder="{{__('web.User University ID')}}">
+                <input type="number" class="form-control" name="BZUid" placeholder="">
            </div>
 
              <div class="form-group">
                  <label>{{__('web.Password')}}</label>
-                 <input type="password" class="form-control" placeholder="{{__('web.Password')}}">
+                 <input type="password" name="password" class="form-control" placeholder="">
             </div>
+            <div class="form-group">
+                <label>{{__('web.Confirm Password')}}</label>
+                <input type="password" name="password_confirmation" class="form-control" placeholder="">
+           </div>
                             <div class="checkbox">
                                 <label>
                         <input type="checkbox"> {{__('web.Agree the terms and policy')}}
-                    </label>
+                               </label>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">{{__('web.Register')}}</button>
+                            <button class="btn btn-primary btn-flat m-b-30 m-t-30">{{__('web.Register')}}</button>
 
                             <div class="register-link m-t-15 text-center">
-                                <p>{{__('web.Already have account ?')}} <a href="#"> {{__('web.Sign in')}}</a></p>
+                                <p>{{__('web.Already have account ?')}} <a href="{{url('/login')}}"> {{__('web.login')}}</a></p>
                             </div>
             </form>
         </div>

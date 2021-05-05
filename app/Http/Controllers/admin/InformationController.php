@@ -7,6 +7,7 @@ use App\Models\Driver;
 use App\Models\Passenger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class InformationController extends Controller
 {
@@ -17,7 +18,8 @@ class InformationController extends Controller
 
     }
     public function showAdmin(){
-        $data['admins']=Admin::select('name','ssn','phone','email','banknumber','created_at')->get();
+        $data['admins']=Admin::select('name','ssn','phone','email','bankNum','created_at')->get();
+
      return view('admin.information.Admininformation')->with($data);
 
 
@@ -30,6 +32,9 @@ class InformationController extends Controller
     return view('admin.subAdmin.PassPayment');
 }
 
+public function subadminprofile(){
+    return view('admin.subadmin.profile');
+}
 
 
 }

@@ -19,12 +19,12 @@ class CreateDriversTable extends Migration
             $table->string('phone')->unique();
             $table->string('password');
             $table->bigInteger('ssn')->unique();
-            $table->double('salray');
-            $table->string('license');
+            $table->double('salray')->default('00');
+            $table->string('license')->nullable();
             $table->enum('available', ['yes', 'no'])->default('yes');
             $table->enum('busy', ['yes', 'no'])->default('no');
             $table->string('banknumber');
-            $table->foreignId('admin_id')->constrained();
+           // $table->foreignId('admin_id')->constrained()->nullable();
             $table->timestamps();
         });
     }

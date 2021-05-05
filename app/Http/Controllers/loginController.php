@@ -6,10 +6,6 @@ use Illuminate\Http\Request;
 
 class loginController extends Controller
 {
-    public function show($id){
-        return view('login');
-    }
-    public function forgetPassShow($id){
-        return view('forgetPassword');
-    }
+
+    
 }

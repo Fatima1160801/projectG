@@ -2,7 +2,6 @@
 @section('title')Earning @endsection
 @section('main')
  <!-- Header-->
-
  <div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">

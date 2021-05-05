@@ -33,7 +33,7 @@
                         <h2>{{__('web.Manage')}}  <b>{{__('web.Driver')}} </b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i><span>Add New Employee{{__('web.')}} </span></a>
+                        <a href="{{url('/admin/AddDriver/{id}')}}" class="btn btn-success" ><i class="fa fa-plus" aria-hidden="true"></i> {{__('web.Add New driver')}} </a>
                         <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"> <i class="fa fa-trash-o" aria-hidden="true"></i><span>Delete{{__('web.')}} </span></a>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         </td>
                         <td>{{$driver->name}}</td>
                         <td>{{$driver->ssn}}</td>
-                        <td>{{$driver->banknumber}}</td>
+                        <td>{{$driver->bankNum}}</td>
                         <td>{{$driver->phone}}</td>
                         <td>{{$driver->license}}</td>
                         <td>{{$driver->created_at}}</td>
@@ -97,41 +97,8 @@
             </div>
         </div>
     </div>
-    <!-- Edit Modal HTML -->
-    <div id="addEmployeeModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title"> {{__('web.Add Employee')}} </h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>{{__('web.Name')}} </label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>{{__('web.Email')}} </label>
-                            <input type="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>{{__('web.Address')}} </label>
-                            <textarea class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>{{__('web.Phone')}} </label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-success" value="Add">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
+
     <!-- Edit Modal HTML -->
     <div id="editEmployeeModal" class="modal fade">
         <div class="modal-dialog">

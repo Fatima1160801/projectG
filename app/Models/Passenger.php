@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Trip;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Passenger extends Model
 {
@@ -17,5 +18,8 @@ class Passenger extends Model
     public function payments(){
             return $this->hasMany(Payment::class);
         }
-        
+        public function Passenger_Trip(){
+            return $this->belongsToMany(Passenger_Trip::class);
+        }
+
 }

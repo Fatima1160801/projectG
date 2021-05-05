@@ -13,6 +13,7 @@ class CreatePassengerTripsTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('passenger__trips', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('seatNum');
@@ -30,6 +31,6 @@ class CreatePassengerTripsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('passenger_trips');
+        Schema::dropIfExists('passenger__trips');
     }
 }

@@ -43,13 +43,6 @@
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
 
-        <div class="navbar-header">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="./"><img src="" alt="Logo"></a>
-            <a class="navbar-brand hidden" href="./"><img src="images/logo.png" alt="Logo"></a>
-        </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -70,8 +63,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user"></i> {{__('web.Manage Driver')}}</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-map-marker"></i><a href="Track-Drivers .html">{{__('web.Track Drivers')}} </a></li>
-                        <li><i class="fa fa-plus"></i><a href="Driver-Add.html"> {{__('web.Add New driver')}} </a></li>
-                        <li><i class="fa fa-info"></i><a href="Drivers-information.html">{{__('web.Information')}} </a></li>
+                        <li><i class="fa fa-plus"></i><a href="{{url('/admin/AddDriver/1')}}"> {{__('web.Add New driver')}} </a></li>
+                        <li><i class="fa fa-info"></i><a href="{{url('/admin/informationDriver/{id}')}}">{{__('web.Information')}} </a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
@@ -79,15 +72,15 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-pencil-square"></i><a href="Manual-Bookings.html"> {{__('web.Manual Bookings')}} </a></li>
                         <li><i class="fa ti-gift"></i><a href="Manage-Rewards.html">{{__('web.Manage Rewards')}} </a></li>
-                        <li><i class="fa fa-info"></i><a href="Passenger-Information.html">{{__('web.Information')}} </a></li>
+                        <li><i class="fa fa-info"></i><a href="{{url("/admin/informationPassenger/id")}}">{{__('web.Information')}} </a></li>
 
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user"></i>{{__('web.Manage Admin')}}</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-plus"></i><a href="AddAdmin.html">{{__('web.Add New Admin')}} </a></li>
-                        <li><i class="fa fa-info"></i><a href="Passenger-Information.html">{{__('web.Information')}} </a></li>
+                        <li><i class="fa fa-plus"></i><a href="{{url("/admin/AddAdmin/{id}")}}">{{__('web.Add New Admin')}} </a></li>
+                        <li><i class="fa fa-info"></i><a href="{{url("/admin/informationAdmin/{id}")}}">{{__('web.Information')}} </a></li>
                     </ul>
                 </li>
 
@@ -105,9 +98,9 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i> {{__('web.Analytics')}} </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa ti-money"></i><a href="track-earnings.html">{{__('web.Track Earnings')}}</a></li>
-                        <li><i class="menu-icon fa ti-time"></i><a href="Rush-hours.html">{{__('web.Rush Hours')}}</a></li>
-                        <li><i class="menu-icon fa ti-plus"></i><a href="Extra.html"> {{__('web.Extra')}} </a></li>
+                        <li><i class="menu-icon fa ti-money"></i><a href="{{url('/admin/ManageRewards/id')}}">{{__('web.Track Earnings')}}</a></li>
+                        <li><i class="menu-icon fa ti-time"></i><a href="{{url('/admin/RushHours/id')}}">{{__('web.Rush Hours')}}</a></li>
+                        <li><i class="menu-icon fa ti-plus"></i><a href="{{url('/admin/Extra')}}"> {{__('web.Extra')}} </a></li>
                     </ul>
                 </li>
 
@@ -129,7 +122,13 @@
 
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                    <div class="header-left">
+                    <div class="header-left d-flex">
+                        <div>   @if(App::getLocale()=="ar")
+                            <a class="nav-link mr-1" href="{{url('lang/set/en')}}"><i class="fa fa-question-circle"></i> English</a>
+                            @else
+                            <a class="nav-link mr-1" href="{{url('lang/set/ar')}}"><i class="fa fa-question-circle"></i> Arabic</a>
+                        @endif</div>
+
                         <button class="search-trigger"><i class="fa fa-search"></i></button>
                         <div class="form-inline">
                             <form class="search-form">
@@ -157,6 +156,7 @@
                                 <i class="fa fa-warning"></i>
                                 <p>Server #3 overloaded.</p>
                             </a>
+
                             </div>
                         </div>
 
@@ -200,20 +200,25 @@
                                     <span class="time float-right">15 minutes ago</span>
                                         <p>Lorem ipsum dolor sit amet, consectetur</p>
                                 </span>
+
                             </a>
+
                             </div>
                         </div>
+
                     </div>
                 </div>
 
                 <div class="col-sm-5">
+
                     <div class="user-area dropdown float-right">
+
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="{{asset('admin/images/admin.jpg')}}" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i>{{__('web.My profile')}} </a>
+                            <a class="nav-link" href="{{url('/admin/Admin-Profile/1')}}"><i class="fa fa-user"></i>{{__('web.My profile')}} </a>
 
                             <a class="nav-link" href="#"><i class="fa fa-user"></i> {{__('web.Notifications')}} <span class="count">13</span></a>
 
@@ -221,6 +226,7 @@
 
                             <a class="nav-link" href="#"><i class="fa fa-power-off"></i> {{__('web.Logout')}} </a>
                         </div>
+
                     </div>
 
 
@@ -231,30 +237,7 @@
         <!-- Header-->
 @yield('main')
 
-<!-- footer -->
-<div class="card-footer">
-    <div class="panel-footer">
-        <div class="col-sm-3 mt-3">
-            <div class="foo mt-2"><p>© 2020 BZU TRANSPORTATION</p></div>
-        </div>
-        <div class="col-sm-5 "></div>
-        <div class="col-sm-4 mt-3  d-flex justify-content-around ">
 
-            @if(App::getLocale()=="ar")
-            <a class="nav-link mr-1" href="{{url('lang/set/en')}}"><i class="fa fa-question-circle"></i> english</a>
-            @else
-            <a class="nav-link mr-1" href="{{url('lang/set/ar')}}"><i class="fa fa-question-circle"></i> arabic</a>
-            @endif
-            <a class="nav-link mr-1" href="#"><i class="fa fa-question-circle"></i> HELP</a>
-            <a class="nav-link mr-1" href="#"><i class="fa fa-phone-square"></i> SOS</a>
-
-
-        </div>
-    </div>
-</div>
-</div>
-
- <!-- footer end -->
 
 <script src="{{asset('admin/vendors/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('admin/vendors/popper.js/dist/umd/popper.min.js')}}"></script>

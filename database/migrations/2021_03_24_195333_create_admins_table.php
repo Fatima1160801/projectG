@@ -18,11 +18,10 @@ class CreateAdminsTable extends Migration
             $table->string('name');
             $table->bigInteger('ssn')->unique();
             $table->string('phone');
-            $table->double('salray');
+            $table->double('salray')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('bankNum')->unique();
-            $table->foreignId('role_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -21,8 +21,8 @@ class CreateTripsTable extends Migration
             $table->text('pickup');
             $table->text('dropoff');
             $table->enum('statusTrip',['waiting','delete','confirmed'])->default('waiting');
-            $table->double('price',5,2);
-            $table->double('gratuity',5,2);
+            $table->double('price',5,2)->default(5.00);
+            $table->double('gratuity',5,2)->default(0);
             $table->bigInteger('passengerCounter');
             $table->enum('PaymentType', ['cash','BZUid']);
             $table->text('DriverNote');

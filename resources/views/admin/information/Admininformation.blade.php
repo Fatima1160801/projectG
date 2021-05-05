@@ -13,8 +13,8 @@
             <div class="page-title">
                 <ol class="breadcrumb text-right">
                     <li><a href="#">{{__('web.Dashboard')}}</a></li>
-                    <li><a href="#">{{__('web.Manage Driver')}}</a></li>
-                    <li class="active">{{__('web.Information')}}</li>
+                    <li class="active"><a href="#">{{__('web.Manage Admin')}}</a></li>
+                    <li ><a href="{{url('/admin/AddAdmin/{id}')}}">{{__('web.Add New Admin')}}</a></li>
                 </ol>
             </div>
         </div>
@@ -30,7 +30,7 @@
                         <h2>{{__('web.Manage')}} <b>{{__('web.Admin')}}</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i><span>{{__('web.Add New Employee')}}</span></a>
+                        <a href="{{url('/admin/AddAdmin/{id}')}}" class="btn btn-success" ><i class="fa fa-plus" aria-hidden="true"></i> {{__('web.Add New Admin')}} </a>
                         <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"> <i class="fa fa-trash-o" aria-hidden="true"></i><span>{{__('web.Delete')}}</span></a>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                         <td>{{$admin->phone}}</td>.
                         <td>
                             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <a href="{{url("/admin/delete/$admin->id")}}" class="delete" data-toggle="modal"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </td>
                     </tr>
 
@@ -91,41 +91,7 @@
             </div>
         </div>
     </div>
-    <!-- Edit Modal HTML -->
-    <div id="addEmployeeModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title">{{__('web.Add Employee')}}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>{{__('web.Name')}}</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>\{{__('web.Email')}}</label>
-                            <input type="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>{{__('web.Address')}}</label>
-                            <textarea class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>{{__('web.Phone')}}</label>
-                            <input type="text" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-success" value="Add">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
     <!-- Edit Modal HTML -->
     <div id="editEmployeeModal" class="modal fade">
         <div class="modal-dialog">
@@ -137,7 +103,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>{{__('web.Name')}}</label> 
+                            <label>{{__('web.Name')}}</label>
                             <input type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
@@ -161,27 +127,8 @@
             </div>
         </div>
     </div>
-    <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title">{{__('web.Delete Employee ')}}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>{{__('web.Are you sure you want to delete these Records?')}}</p>
-                        <p class="text-warning"><small>{{__('web.This action cannot be undone.')}}</small></p>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
+
 
 </div>
 @endsection

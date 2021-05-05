@@ -9,38 +9,71 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> BZU transportaion @yield('title') </title>
+    <title> Birzeit Transportation @yield('title')</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="{{asset('admin/vendors/bootstrap/dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/vendors/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/vendors/themify-icons/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/vendors/flag-icon-css/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/vendors/selectFX/css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/vendors/jqvmap/dist/jqvmap.min.css')}}">
 
-    <link rel="stylesheet" href=" {{asset('web/vendors/bootstrap/dist/css/bootstrap.min.css')}} ">
-    <link rel="stylesheet" href="{{asset('web/vendors/font-awesome/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href=" {{asset('web/vendors/themify-icons/css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('web/vendors/flag-icon-css/css/flag-icon.min.css')}}">
-    <link rel="stylesheet" href="{{asset('web/vendors/selectFX/css/cs-skin-elastic.css')}}">
-    <link rel="stylesheet" href="{{asset('web/vendors/jqvmap/dist/jqvmap.min.css')}}">
 
 
-    <link rel="stylesheet" href="{{asset('web/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('web/assets/css/mystyle.css')}}">
-
+    <link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    @yield('styles')
 
 </head>
 
 <body>
 
+   <!-- Left Panel -->
+
+   <aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="./"><img src="" alt="Logo"></a>
+            <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+        </div>
+
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+                <h3 class="menu-title">{{__('web.Management')}}</h3><!-- /.menu-title -->
+
+                    <li>
+                        <a href="{{url("/subadmin/payment")}}"><i class="menu-icon fa fa-user"></i>{{__('web.Passengers Payments')}}</a>
+                    </li>
+
+
+                    <h3 class="menu-title"> {{__('web.Communicate')}} </h3><!-- /.menu-title -->
+
+
+                    <li>
+                        <a href="Notifications.html"><i class="menu-icon fa fa-bell-o"></i> {{__('web.Send Notifications')}} </a>
+                    </li>
+                    <li>
+                        <a href="Messages.html"> <i class="menu-icon ti-email"></i> {{__('web.Send Messages')}} </a>
+                    </li>
 
 
 
-    <!-- Left Panel -->
 
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside><!-- /#left-panel -->
+
+<!-- Left Panel -->
     <!-- Right Panel -->
 
     <div id="right-panel" class="right-panel">
@@ -50,9 +83,16 @@
 
             <div class="header-menu">
 
-                <div class="col-sm-7  ">
-
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                     <div class="header-left">
+                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline">
+                            <form class="search-form">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            </form>
+                        </div>
 
                         <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,15 +103,15 @@
                                 <p class="red">You have 3 Notification</p>
                                 <a class="dropdown-item media bg-flat-color-1" href="#">
                                 <i class="fa fa-check"></i>
-                                <p>Notification #1 from admin .</p>
+                                <p>Server #1 overloaded.</p>
                             </a>
                                 <a class="dropdown-item media bg-flat-color-4" href="#">
                                 <i class="fa fa-info"></i>
-                                <p>Notification #2 from admin.</p>
+                                <p>Server #2 overloaded.</p>
                             </a>
                                 <a class="dropdown-item media bg-flat-color-5" href="#">
                                 <i class="fa fa-warning"></i>
-                                <p>Notification #3 from admin.</p>
+                                <p>Server #3 overloaded.</p>
                             </a>
                             </div>
                         </div>
@@ -86,7 +126,7 @@
                             <div class="dropdown-menu" aria-labelledby="message">
                                 <p class="red">You have 4 Mails</p>
                                 <a class="dropdown-item media bg-flat-color-1" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="{{asset('web/images/avatar/1.jpg')}}"></span>
+                                <span class="photo media-left"><img alt="avatar" src="{{asset('admin/images/avatar/1.jpg')}}"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Jonathan Smith</span>
                                     <span class="time float-right">Just now</span>
@@ -94,7 +134,7 @@
                                 </span>
                             </a>
                                 <a class="dropdown-item media bg-flat-color-4" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="{{asset('web/images/avatar/2.jpg')}}"></span>
+                                <span class="photo media-left"><img alt="avatar" src="{{asset('admin/images/avatar/2.jpg')}}"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Jack Sanders</span>
                                     <span class="time float-right">5 minutes ago</span>
@@ -102,7 +142,7 @@
                                 </span>
                             </a>
                                 <a class="dropdown-item media bg-flat-color-5" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="{{asset('web/images/avatar/3.jpg')}}"></span>
+                                <span class="photo media-left"><img alt="avatar" src="{{asset('admin/images/avatar/3.jpg')}}"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Cheryl Wheeler</span>
                                     <span class="time float-right">10 minutes ago</span>
@@ -110,7 +150,7 @@
                                 </span>
                             </a>
                                 <a class="dropdown-item media bg-flat-color-3" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="{{asset('web/images/avatar/4.jpg')}}"></span>
+                                <span class="photo media-left"><img alt="avatar" src="{{asset('admin/images/avatar/4.jpg')}}"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Rachel Santos</span>
                                     <span class="time float-right">15 minutes ago</span>
@@ -122,72 +162,38 @@
                     </div>
                 </div>
 
-
-                <div class="col-sm-5  ">
+                <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <div class="d-flex flex-row-reverse">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="user-avatar rounded-circle" src=" {{asset('web/images/admin.jpg')}}" alt="User Avatar">
-                            </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="{{asset('admin/images/admin.jpg')}}" alt="User Avatar">
+                        </a>
 
-                            <div class="user-menu dropdown-menu ">
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="{{url("/subadmin/profile")}}"><i class="fa fa-user"></i>{{__('web.My profile')}} </a>
 
-                                <a class="nav-link" href="{{url('passenger/My-Profile/$id')}}"><i class="fa fa-user"></i> {{__('web.My profile')}}</a>
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> {{__('web.Notifications')}} <span class="count">13</span></a>
 
-                                <a class="nav-link" href="{{url('passenger/My-Rate/2')}}"><i class="fa fa-star-half-o"></i> {{__('web.My Rate')}}</a>
-                                <a class="nav-link" href="{{url('passenger/Rewards/$id')}}"><i class="fa fa-star-half-o"></i> {{__('web.Rewards')}} </a>
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i>  {{__('web.Settings')}}</a>
 
-
-                                <!--<a  id="logout-link" class="nav-link" href="#"><i class="fa fa-power-off"></i> {{__('web.Logout')}}
-                                </a>
-                                <form id="logout-form" method="POST" action="{{url('/logout')}}"  style="display: none">
-                                    @csrf
-                                </form>
-                            -->
-
-
-
-                            </div>
-
-                            <a class="nav-link mr-1" href="{{url('passenger/My-Trips/2')}}"><i class="fa ti-panel"></i> {{__('web.Trips')}}</a>
-                            <a class="nav-link" href="{{url('/1')}}"><i class="fa fa-plus"></i> {{__('web.New Booking')}}</a>
-
+                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> {{__('web.Logout')}} </a>
                         </div>
-
-
-
-
                     </div>
 
 
-
-
-
                 </div>
-
-
             </div>
 
         </header><!-- /header -->
-
+        <!-- Header-->
 @yield('main')
- <!-- footer -->
+<!-- footer -->
 <div class="card-footer">
     <div class="panel-footer">
         <div class="col-sm-3 mt-3">
             <div class="foo mt-2"><p>© 2020 BZU TRANSPORTATION</p></div>
         </div>
-
-
-
-
         <div class="col-sm-5 "></div>
         <div class="col-sm-4 mt-3  d-flex justify-content-around ">
-            <form method="POST" action="{{url('logout')}}" id="logout-form" style="">
-                @csrf
-                <input class="btn btn-outline-warning" style="border-radius: 8px;" type="submit" value="{{__('web.Logout')}}" id="logout-link"><i class="fas fa-sign-out-alt"></i>
-
-            </form>
 
             @if(App::getLocale()=="ar")
             <a class="nav-link mr-1" href="{{url('lang/set/en')}}"><i class="fa fa-question-circle"></i> english</a>
@@ -201,27 +207,21 @@
         </div>
     </div>
 </div>
+</div>
 
  <!-- footer end -->
-<!-- .content -->
+<script src="{{asset('admin/vendors/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{asset('admin/vendors/popper.js/dist/umd/popper.min.js')}}"></script>
+<script src="{{asset('admin/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/main.js')}}"></script>
 
 
-</div><!-- /#right-panel -->
-
-
-
-<script src="{{asset('web/vendors/jquery/dist/jquery.min.js')}}"></script>
-<script src="{{asset('web/vendors/popper.js/dist/umd/popper.min.js')}}"></script>
-<script src="{{asset('web/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('web/assets/js/main.js')}}"></script>
-
-
-<script src="{{asset('web/vendors/chart.js/dist/Chart.bundle.min.js')}}"></script>
-<script src="{{asset('web/assets/js/dashboard.js')}}"></script>
-<script src="{{asset('web/assets/js/widgets.js')}}"></script>
-<script src="{{asset('web/vendors/jqvmap/dist/jquery.vmap.min.js')}}"></script>
-<script src="{{asset('web/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
-<script src="{{asset('web/vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
+<script src="{{asset('admin/')}}vendors/chart.js/dist/Chart.bundle.min.js"></script>
+<script src="{{asset('admin/')}}assets/js/dashboard.js"></script>
+<script src="{{asset('admin/')}}assets/js/widgets.js"></script>
+<script src="{{asset('admin/')}}vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="{{asset('admin/')}}vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<script src="{{asset('admin/')}}vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 <script>
     (function($) {
         "use strict";
@@ -239,13 +239,6 @@
             normalizeFunction: 'polynomial'
         });
     })(jQuery);
-    @yield('scripts')
-</script>
-<script>
-   $('#logout-link').click(function(e){
-       e.preventDefault();
-       $('#logout-form').submit();
-   });
 </script>
 
 </body>

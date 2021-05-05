@@ -35,29 +35,7 @@
 
 <body>
     @yield('main')
-    <!-- footer -->
-<div class="card-footer">
-    <div class="panel-footer">
-        <div class="col-sm-3 mt-3">
-            <div class="foo mt-2"><p>© 2020 BZU TRANSPORTATION</p></div>
-        </div>
-        <div class="col-sm-5 "></div>
-        <div class="col-sm-4 mt-3  d-flex justify-content-around ">
 
-            @if(App::getLocale()=="ar")
-            <a class="nav-link mr-1" href="{{url('lang/set/en')}}"><i class="fa fa-question-circle"></i> english</a>
-            @else
-            <a class="nav-link mr-1" href="{{url('lang/set/ar')}}"><i class="fa fa-question-circle"></i> arabic</a>
-            @endif
-            <a class="nav-link mr-1" href="#"><i class="fa fa-question-circle"></i> HELP</a>
-            <a class="nav-link mr-1" href="#"><i class="fa fa-phone-square"></i> SOS</a>
-
-
-        </div>
-    </div>
-</div>
-
- <!-- footer end -->
 
 
 
