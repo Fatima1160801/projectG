@@ -62,6 +62,8 @@ Route::get('/passenger/Newbooking-confirm/{id}',[ConfirmController::class,'show'
 Route::get('/passenger/My-Trips/{id}',[MyTripsController::class,'show'])->middleware(['auth','verified','passenger']);
 Route::get('/passenger/Rewards/{id}',[RewardsController::class,'show'])->middleware(['auth','verified','passenger']);
 
+
+
 //insert data to database Passenger (Post)
 Route::post('/requestVanTrip/{id}',[HomeController::class,'requestTripVan']);
 Route::post('/requestTaxiTrip/{id}',[HomeController::class,'requestTripTaxi']);
@@ -71,15 +73,34 @@ Route::post('/insertadmin',[AddAdminController::class,'insertadmin']);
 Route::post('/insertdriver',[AddDriverController::class,'insertdriver']);
 Route::post('/insertcab',[AddDriverController::class,'insertcab']);
 
-//Admin
+
+
+//*****************************Admin*****************************
 Route::get('/admin/{id}',[AdminHomeController::class,'show']);
 Route::get('/admin/Admin-Profile/{id}',[AdminProfileController::class,'show']);
+
+// add user
 Route::get('/admin/AddDriver/{id}',[AddDriverController::class,'AddDriver']);
 Route::get('/admin/AddAdmin/{id}',[AddAdminController::class,'AddAdmin']);
 
+// ---------information about users-----
+//driver
 Route::get('/admin/informationDriver/{id}',[InformationController::class,'showDriver']);
+Route::get('/admin/informationCab/{id}',[InformationController::class,'Cab']);
+Route::post('/admin/editCabInformationDriver/{id}',[InformationController::class,'updatecab']);
+Route::get('/admin/driverdelete/{driver}',[InformationController::class,'driverdelete']);
+Route::post('/admin/driverupdate/{driver}',[InformationController::class,'driverupdate']);
+
+
+//admin
 Route::get('/admin/informationAdmin/{id}',[InformationController::class,'showAdmin']);
-Route::get('/admin/informationPassenger/{id}',[InformationController::class,'showPassenger']);
+Route::get('/admin/admindelete/{admin}',[InformationController::class,'admindelete']);
+
+
+
+//passenger
+Route::get('/admin/informationPassenger',[InformationController::class,'showPassenger']);
+
 Route::get('/subadmin/profile/{id}',[InformationController::class,'subadminprofile']);
 Route::get('/subadmin/payment/{id}',[InformationController::class,'showpayment']);
 Route::get('/admin/Extra/{id}',[ExtraController::class,'show']);
@@ -90,6 +111,9 @@ Route::get('/admin/Notifications/{id}',[NotificationsController::class,'show']);
 Route::get('/admin/RushHours/{id}',[RushHoursController::class,'show']);
 Route::get('/admin/TrackDrivers/{id}',[TrackDriversController::class,'show']);
 Route::get('/admin/TrackEarnings/{id}',[TrackEarningsController::class,'show']);
+//deletedriver
+
+
 
 //-----------trips---------------------------------------------------------------------------------------
 //-----------trips/bus------------------------------------------------------------------------------------

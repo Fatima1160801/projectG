@@ -49,7 +49,7 @@ class AddDriverController extends Controller
 
         ]);
 
-        
+
      $driverid=$driver->id;
 
      $data=Cab::create([
@@ -71,6 +71,8 @@ class AddDriverController extends Controller
 
 
        }
+
+
 
 
 

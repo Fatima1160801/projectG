@@ -31,7 +31,6 @@
                     </div>
                     <div class="col-sm-6">
                         <a href="{{url('/admin/AddAdmin/{id}')}}" class="btn btn-success" ><i class="fa fa-plus" aria-hidden="true"></i> {{__('web.Add New Admin')}} </a>
-                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"> <i class="fa fa-trash-o" aria-hidden="true"></i><span>{{__('web.Delete')}}</span></a>
                     </div>
                 </div>
             </div>
@@ -57,19 +56,17 @@
                     <tr>
 
                         <td>
-                            <span class="custom-checkbox">
-                                <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                <label for="checkbox1"></label>
-                            </span>
+                         {{$loop->iteration}}
                         </td>
                         <td>{{$admin->name}}</td>
                         <td>{{$admin->ssn}}</td>
                         <td>{{$admin->email}}</td>
-                        <td>{{$admin->banknumber}}</td>
+                        <td>{{$admin->bankNum}}</td>
                         <td>{{$admin->phone}}</td>.
                         <td>
                             <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            <a href="{{url("/admin/delete/$admin->id")}}" class="delete" data-toggle="modal"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <a href="{{url("/admin/admindelete/$admin->id")}}" class="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+
                         </td>
                     </tr>
 
@@ -77,18 +74,7 @@
 
                 </tbody>
             </table>
-            <div class="clearfix">
-                <div class="hint-text"> {{__('web.Showing')}} <b>5</b> out of <b>25</b> {{__('web.entries')}}</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">{{__('web.Previous')}}</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">{{__('web.Next')}}</a></li>
-                </ul>
-            </div>
+            {{$admins->links('web.inc.paginator')}}
         </div>
     </div>
 

@@ -34,7 +34,6 @@
                     </div>
                     <div class="col-sm-6">
                         <a href="{{url('/admin/AddDriver/{id}')}}" class="btn btn-success" ><i class="fa fa-plus" aria-hidden="true"></i> {{__('web.Add New driver')}} </a>
-                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"> <i class="fa fa-trash-o" aria-hidden="true"></i><span>Delete{{__('web.')}} </span></a>
                     </div>
                 </div>
             </div>
@@ -62,23 +61,28 @@
                     <tr>
 
                         <td>
-                            <span class="custom-checkbox">
-                                <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                <label for="checkbox1"></label>
-                            </span>
+                            {{$loop->iteration}}
                         </td>
                         <td>{{$driver->name}}</td>
                         <td>{{$driver->ssn}}</td>
                         <td>{{$driver->bankNum}}</td>
                         <td>{{$driver->phone}}</td>
                         <td>{{$driver->license}}</td>
-                        <td>{{$driver->created_at}}</td>
-                        <td>  <a href="#deleteEmployeeModal" class="btn" data-toggle="modal"> <i class="fa ti-car" aria-hidden="true"></i></a></td>
+                        <td>{{$driver->created_at}} </td>
+
+
+
 
                         <td>
-                            <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 
+                            <button class="btn cab-btn"  data-id="{{$driver->cabs->id}}" data-cabType="{{$driver->cabs->cabType}}"  data-cabNumber="{{$driver->cabs->cabNumber}}" data-license="{{$driver->cabs->license}}"  data-insurance="{{$driver->cabs->insurance}}" data-machineNumber="{{$driver->cabs->machineNumber}}"  data-toggle="modal" data-target="#editCabModal"><i class="fa ti-car" aria-hidden="true"></i> </button>
+
+                        </td>
+                        <td>
+                            <button  class="btn edit drive-btn" data-driverid="{{$driver->id}}" data-toggle="modal" data-target="#editDriverModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        </td>
+                        <td>
+                            <a href="{{url("/admin/driverdelete/$driver->id")}}" class="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                         </td>
 
                     </tr>
@@ -86,47 +90,40 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="clearfix">
-                <div class="hint-text"> {{__('web.Showing')}} <b>5</b> out of <b>25</b>  {{__('web.entries')}} </div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#"> {{__('web.Previous')}}  </a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link">{{__('web.Next')}}</a></li>
-                </ul>
-            </div>
+            {{$drivers->links('web.inc.paginator')}}
         </div>
     </div>
 
 
     <!-- Edit Modal HTML -->
-    <div id="editEmployeeModal" class="modal fade">
+    <div id="editDriverModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form method="post" action="{{url("/admin/driverupdate")}}">
+                    @csrf
+
                     <div class="modal-header">
                         <h4 class="modal-title">{{__('web.Edit Employee')}} </h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
+
                     <div class="modal-body">
                         <div class="form-group">
+
+                            <input type="text" name="id" id ="" class="form-control" required>
+                        </div>
+                        <div class="form-group">
                             <label>{{__('web.Name')}} </label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" name="name" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>{{__('web.Email')}} </label>
-                            <input type="email" class="form-control" required>
+                            <input type="email" name="email" class="form-control" required>
                         </div>
-                        <div class="form-group">
-                            <label>{{__('web.Address')}} </label>
-                            <textarea class="form-control" required></textarea>
-                        </div>
+
                         <div class="form-group">
                             <label>{{__('web.Phone')}} </label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" name="phone"  class="form-control" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -138,10 +135,11 @@
         </div>
     </div>
     <!-- cab Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
+    <div id="editCabModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form >
+                    @csrf
                     <div class="modal-header">
                         <h4 class="modal-title">{{__('web.Cab Details')}} </h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -156,11 +154,9 @@
 
                              </select>
                         </div>
-
-
                         <div class="form-group">
                             <label>{{__('web.Cab Number')}} </label>
-                            <input type="text" class="form-control" placeholder="123-45-678" required>
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>{{__('web.Seat Number')}} </label>
@@ -194,5 +190,23 @@
 <!-- /#right-panel -->
 
 <!-- Right Panel -->
+
+@endsection
+
+
+
+
+@section('script')
+
+
+<script>
+
+     $('.drive-btn').click(function(){
+    var driveridd = $(this).attr("data-driverid");
+  //  $('#').val(driverid);
+  console.log(driveridd);
+
+});
+</script>
 
 @endsection
