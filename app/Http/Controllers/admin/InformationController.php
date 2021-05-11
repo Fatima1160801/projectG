@@ -28,7 +28,7 @@ class InformationController extends Controller
 
     }
     public function showAdmin(){
-        $data['admins']=Admin::paginate(5);
+        $data['admins']=Admin::paginate(2);
 
      return view('admin.information.Admininformation')->with($data);
 
